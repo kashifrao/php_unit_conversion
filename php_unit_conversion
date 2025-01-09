@@ -1,0 +1,58 @@
+// ********* Unit Conversion  ***************
+
+function get_unit($mem) {
+  if ((int)($mem/(1024*1024*1024)) != 0) {
+    return round(($mem/(1024*1024*1024)),2)." GB";
+  } else if ((int)($mem/(1024*1024)) != 0) {
+    return round(($mem/(1024*1024)),2)." MB";
+  } else if ((int)($mem/(1024)) != 0) {
+    return round(($mem/(1024)),2)." KB";
+  }  
+}
+
+
+
+function getAppropMemUnit($memunit, $mem) {
+
+  if (strcmp($memunit, "kb") == 0) {
+    return sprintf("%0.1fkb", ($mem/1024));
+  } else if (strcmp($memunit, "mb") == 0) {
+    return sprintf("%0.1fmb", ($mem/(1024*1024)));
+  } else if (strcmp($memunit, "gb") == 0) {
+    return sprintf("%0.1fgb", ($mem/(1024*1024*1024)));
+  }
+}
+
+function getAppropUnit($mem) {
+  if ((int)($mem/(1024*1024*1024)) != 0) {
+    return "gb";
+  } else if ((int)($mem/(1024*1024)) != 0) {
+    return "mb";
+  } else if ((int)($mem/(1024)) != 0) {
+    return "kb";
+  }
+}
+
+function getInBytes($val) {
+  if (substr_count($val, "gb") == 1) {
+    return (intval($val))*1024*1024*1024;
+  } else if (substr_count($val, "mb") == 1) {
+    return (intval($val))*1024*1024;
+  } else if (substr_count($val, "b") == 1) {
+    return intval($val);
+  }
+}
+
+function getMemUnit($val) {
+  if (substr_count($val, "gb") == 1) {
+    return "gb";
+  } else if (substr_count($val, "mb") == 1) {
+    return "mb";
+  } else if (substr_count($val, "b") == 1) {
+    return "b";
+  } else if (substr_count($val, "perc") == 1) {
+    return "%";
+  } else {
+    return "b";
+  }
+}
